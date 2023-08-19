@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"slices"
+	"golang.org/x/exp/slices"
 )
 
 // BinarySearch/BinarySearchFunc
@@ -22,8 +22,18 @@ import (
 // 	fmt.Println(pos, found)
 // }
 
+// Contains/ContainsFunc
+// func main() {
+// 	numbers := []int{0, 42, -10, 8}
+// 	hasNegative := slices.Contains(numbers, -10)
+// 	fmt.Println("Has a negative:", hasNegative)
+// }
+
+// IndexFunc
 func main() {
 	numbers := []int{0, 42, -10, 8}
-	hasNegative := slices.Contains(numbers, -10)
-	fmt.Println("Has a negative:", hasNegative)
+	i := slices.IndexFunc(numbers, func(n int) bool {
+		return n < 0
+	})
+	fmt.Println("First negative at index", i)
 }
